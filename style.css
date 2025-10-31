@@ -1,0 +1,209 @@
+@media(max-width:540px) {
+    .container {
+        right: 95px;
+    }
+}
+
+
+@media(max-width:464px) {
+    .container {
+        right: 10px;
+    }
+}
+
+.hk {
+    background-color: gray;
+    z-index: 0;
+    position: absolute;
+    right: 4px;
+    display: flex;
+    height: 95%;
+    width: 95%;
+}
+
+
+.hk {
+
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('purnibdy.jpg');
+    /* background-color: #f7b731;  */
+
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+body {
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    /* Added for consistent background behavior across some browsers */
+    background-attachment: fixed;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    /* background-color: aqua; */
+    /* Crucial for 3D perspective for child elements (the book) */
+    perspective: 2000px;
+    /* Adjust this value: smaller = more extreme 3D effect */
+}
+
+.book {
+    position: relative;
+    width: 210px;
+    /* Standard card width */
+    height: 300px;
+    /* Standard card height */
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
+    /* Slightly stronger shadow for depth */
+
+    /* Crucial for enabling 3D transforms on its children */
+    transform-style: preserve-3d;
+
+    /* Initial state of the book */
+    transform: rotateY(0deg);
+
+    /* Smooth transition for all transform properties */
+    transition: transform 0.8s ease-in-out;
+    /* Increased duration for smoother animation */
+
+    cursor: pointer;
+    /* Indicates it's interactive */
+
+    /* Define the pivot point for the 3D rotation */
+    transform-origin: left;
+
+    /* Webkit prefixes for compatibility */
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: rotateY(0deg);
+    -webkit-transition: -webkit-transform 0.8s ease-in-out;
+    -webkit-transform-origin: left;
+    -webkit-box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+.book:hover {
+    /* When hovered, rotate the book to reveal the back */
+    transform: rotateY(-130deg);
+    /* Adjust this angle for how wide the card opens */
+    -webkit-transform: rotateY(-130deg);
+    /* Webkit prefix */
+}
+
+
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+
+    /* Important: hides the back face of the cover as it rotates */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Webkit prefix */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Aligns text to the bottom */
+    align-items: center;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+    /* Or 'Sacramento', cursive; for a more handwritten feel */
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+    /* Ensures cover is on top initially */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.cover p:first-of-type {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.cover p:last-of-type {
+    font-size: 1.5em;
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url('purnibdy.jpg'); Make sure path is correct! */
+    background-color: #f7315f;
+    /* Example back color */
+    /* background-image: url('back_image.png'); /* Uncomment if you have an image for the back */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+
+    /* Important: Rotates the back face into position so it's visible after book rotation */
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    /* Webkit prefix */
+
+    /* Hides the back face of the back as it rotates */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Webkit prefix */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-family: cursive;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1;
+    /* Ensures back is behind cover initially */
+}
+
+.back p {
+    margin: 5px 0;
+}
+
+.back p:first-of-type {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.back p:nth-of-type(2) {
+    font-size: 1.5em;
+}
+
+.back p:last-of-type {
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+
